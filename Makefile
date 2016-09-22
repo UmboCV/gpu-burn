@@ -30,7 +30,7 @@ gpu_burn.cuda_kernel: compare.cu Makefile
 	PATH=.:${CCPATH}:${PATH} ${NVCC} ${NVCCFLAGS} compare.cu -o $@
 
 gpu_burn: gpu_burn.cuda_kernel gpu_burn-drv.cpp
-	g++ -o gpu_burn gpu_burn-drv.cpp -O3 -I${CUDAPATH}/include -lcuda -L${CUDAPATH}/lib64 -L${CUDAPATH}/lib -Wl,-rpath=${CUDAPATH}/lib64 -Wl,-rpath=${CUDAPATH}/lib -lcublas -lcudart
+	g++ -o gpu_burn gpu_burn-drv.cpp -O3 -I${CUDAPATH}/include -lcuda -L${CUDAPATH}/lib64 -L${CUDAPATH}/lib -L/usr/local/cuda/lib64 -L/usr/local/cuda/targets/x86_64-linux/lib/stubs/ -Wl,-rpath=${CUDAPATH}/lib64 -Wl,-rpath=${CUDAPATH}/lib -lcublas -lcudart
 
 
 clean:
